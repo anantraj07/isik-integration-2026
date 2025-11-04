@@ -404,6 +404,8 @@ body.light-mode #canvas3d {
 
 .contact-item {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   font-size: 0.95rem;

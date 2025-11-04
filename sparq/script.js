@@ -115,8 +115,8 @@ window.addEventListener(
     if (hero) {
       const heroHeight = hero.offsetHeight;
       if (scrollTop < heroHeight) {
-        hero.style.transform = `translateY(${scrollTop * 0.4}px)`;
-        hero.style.opacity = 1 - (scrollTop / heroHeight) * 0.5;
+        hero.style.transform = `translateY(${scrollTop * 0.1}px)`;
+        hero.style.opacity = 1 - (scrollTop / heroHeight) * 0.1;
       }
     }
   },

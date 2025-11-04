@@ -351,6 +351,7 @@ body.light-mode #canvas3d {
 .prize-highlight {
   background: rgba(0, 212, 255, 0.15);
   border: 1px solid var(--border-color);
+  max-width: 70%;
   border-radius: 12px;
   padding: 20px 30px;
   color: var(--text-secondary);

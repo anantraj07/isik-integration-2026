@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+
   --bg-primary: #0a0015;
   --bg-secondary: rgba(15, 5, 25, 0.6);
   --bg-card: rgba(138, 43, 226, 0.05);

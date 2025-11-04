@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Integration Fest 2026</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <style>
+    .icon {
+      width: 1.1em;
+      height: 1.1em;
+      vertical-align: sub;
+      margin-right: 0.4em;
+    }
+  </style>
+</head>
+
+<body class="light-mode">
+  <canvas id="canvas3d"></canvas>
+
+  <div class="theme-toggle" id="themeToggle">
+    <div class="toggle-icon">🌙</div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">Integration Fest</div>
+
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item">
+          <a href="/" class="nav-link">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle">Tech ▾</span>
+          <ul class="dropdown-menu">
+            <li><a href="/sparq/" class="dropdown-link">SPARQ</a></li>
+            <li><a href="/mtrp/" class="dropdown-link">MTRP</a></li>
+            <li><a href="/intbee/" class="dropdown-link">Integration Bee</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="/cultural/" class="nav-link">Cultural</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/sports/" class="nav-link">Sports</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/gallery/" class="nav-link">Gallery</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle">About ▾</span>
+          <ul class="dropdown-menu">
+            <li><a href="/#footer-tabs" class="dropdown-link about-dropdown">Venue</a></li>
+            <li><a href="/#footer-tabs" class="dropdown-link about-dropdown">Sponsors</a></li>
+            <li><a href="/#footer-tabs" class="dropdown-link about-dropdown">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>
+        <img src="https://cdn-icons-png.flaticon.com/512/1042/1042339.png" alt="Camera" class="icon" />
+        Events Gallery
+      </h1>
+
+      <p>Capturing moments of brilliance and creativity</p>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="section-header">
+      <h2>Captured Highlights</h2>
+      <p>Relive the moments from Integration Fest</p>
+    </div>
+
+    <div class="controls">
+      <button class="tab-btn active" data-tab="tech">💻 Tech</button>
+      <button class="tab-btn" data-tab="cultural">🎭 Cultural</button>
+      <button class="tab-btn" data-tab="sports">🏆 Sports</button>
+    </div>
+
+    <div class="gallery-container active" id="tech-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../assets/images/MTRP_0.JPG?w=700&h=400&fit=crop" alt="Tech 1">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/MTRP_1.JPG?w=800&h=500&fit=crop" alt="Tech 2">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/MTRP_6.jpg?w=800&h=700&fit=crop" alt="Tech 3">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/MTRP_3.JPG?w=800&h=550&fit=crop" alt="Tech 4">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/MTRP_4.JPG?w=800&h=600" alt="Tech 5">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/MTRP_2.JPG?w=800&h=700&fit=crop" alt="Tech 6">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <!-- <div class="gallery-item"> -->
+        <!--   <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop" alt="Tech 7"> -->
+        <!--   <div class="item-overlay"> -->
+        <!--   </div> -->
+        <!--   <div class="zoom-icon">🔍</div> -->
+        <!-- </div> -->
+        <!-- <div class="gallery-item"> -->
+        <!--   <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=700&fit=crop" alt="Tech 8"> -->
+        <!--   <div class="item-overlay"> -->
+        <!--   </div> -->
+        <!--   <div class="zoom-icon">🔍</div> -->
+        <!-- </div> -->
+        <!-- <div class="gallery-item"> -->
+        <!--   <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=550&fit=crop" alt="Tech 9"> -->
+        <!--   <div class="item-overlay"> -->
+        <!--   </div> -->
+        <!--   <div class="zoom-icon">🔍</div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="gallery-container" id="cultural-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../assets/images/cultural_alaap.jpg?w=800&h=600&fit=crop" alt="Cultural 1">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/cultural_tdl_0.jpg?w=800&h=500&fit=crop" alt="Cultural 2">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/cultural_0.jpg?w=800&h=700&fit=crop" alt="Cultural 3">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/cultural_alaap_0.jpg?w=800&h=550&fit=crop" alt="Cultural 4">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/cultural_1.jpg?w=800&h=550&fit=crop" alt="Cultural 5">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/cultural_2.jpg?w=800&h=550&fit=crop" alt="Cultural 6">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-container" id="sports-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../assets/images/sports_1.jpg?w=800&h=500&fit=crop" alt="Sports 1">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/sports_chess_0.jpg?w=800&h=500&fit=crop" alt="Sports 2">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/sports_cricket_1.jpg?w=800&h=700&fit=crop" alt="Sports 3">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/sports_football_1.jpg?w=800&h=500&fit=crop" alt="Sports 4">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/sports_2.jpg?w=800&h=500&fit=crop" alt="Sports 5">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/sports_3.jpg?w=800&h=500&fit=crop" alt="Sports 6">
+          <div class="item-overlay">
+          </div>
+          <div class="zoom-icon">🔍</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-controls">
+      <button class="lb-btn" id="zoomIn">+</button>
+      <button class="lb-btn" id="zoomOut">−</button>
+      <button class="lb-btn" id="resetZoom">↺</button>
+      <button class="lb-close" id="closeLightbox">×</button>
+    </div>
+
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="">
+      <div class="lightbox-info">
+        <h3 id="lightboxCaption"></h3>
+        <p id="lightboxDate"></p>
+        <p id="lightboxCounter"></p>
+      </div>
+    </div>
+
+    <button class="lb-nav lb-prev" id="prevBtn">‹</button>
+    <button class="lb-nav lb-next" id="nextBtn">›</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Integration Fest 2026</div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="/assets/js/global.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration Fest 2026 - Indian Statistical Institute, Kolkata</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/css/global.css">
+</head>
+
+<body class="light-mode">
+  <!-- Loading Screen -->
+  <!-- <div class="loading-screen" id="loadingScreen"> -->
+  <!--   <div class="integration-symbol-load">∫</div> -->
+  <!--   <div class="integration-equation"> -->
+  <!--     <span style="color: #667eea;">(</span> -->
+  <!--     <span style="color: #764ba2;">Innovation</span> -->
+  <!--     <span style="color: #667eea;"> + </span> -->
+  <!--     <span style="color: #f093fb;">Creativity</span> -->
+  <!--     <span style="color: #667eea;"> + </span> -->
+  <!--     <span style="color: #4facfe;">Technology</span> -->
+  <!--     <span style="color: #667eea;">)</span> -->
+  <!--     <span style="color: #8892b0;"> dx</span> -->
+  <!--   </div> -->
+  <!--   <div class="loading-terms"> -->
+  <!--     <span style="animation-delay: 0.2s;">Integrating</span> -->
+  <!--     <span style="animation-delay: 0.4s;">all</span> -->
+  <!--     <span style="animation-delay: 0.6s;">possibilities</span> -->
+  <!--     <span style="animation-delay: 0.8s;">...</span> -->
+  <!--   </div> -->
+  <!--   <div class="result-text" id="resultText">= INTEGRATION FEST 2026</div> -->
+  <!-- </div> -->
+
+  <!-- Celebration Container -->
+  <div class="celebration-container" id="celebrationContainer"></div>
+
+  <!-- Chaos Theory Canvas -->
+  <canvas id="chaosCanvas"></canvas>
+
+  <!-- 3D Canvas Background -->
+  <canvas id="canvas3d"></canvas>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle" id="themeToggle">
+    <div class="toggle-icon">🌙</div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">Integration Fest</div>
+
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item">
+          <a href="/" class="nav-link">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle">Tech ▾</span>
+          <ul class="dropdown-menu">
+            <li><a href="/sparq/" class="dropdown-link">SPARQ</a></li>
+            <li><a href="/mtrp/" class="dropdown-link">MTRP</a></li>
+            <li><a href="/intbee/" class="dropdown-link">Integration Bee</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="/cultural/" class="nav-link">Cultural</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/sports/" class="nav-link">Sports</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/gallery/" class="nav-link">Gallery</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle">About ▾</span>
+          <ul class="dropdown-menu">
+            <li><a href="/#footer-tabs" class="dropdown-link about-dropdown">Venue</a></li>
+            <li><a href="/#footer-tabs" class="dropdown-link about-dropdown">Sponsors</a></li>
+            <li><a href="/#footer-tabs" class="dropdown-link about-dropdown">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="main-title">INTEGRATION FEST 2026</h1>
+    <p class="tagline">The annual techno-cultural sports fest of Indian Statistical Institute, Kolkata. Join thousands
+      of students from across India for decades of excellence in ideas, creativity, and talent.</p>
+    <div class="cta-buttons">
+      <a href="/#our-events-header" class="btn btn-primary">Explore Events</a>
+      <a href="/#register-header" class="btn btn-secondary">Register Now</a>
+    </div>
+  </section>
+
+  <!-- Main Heading for the Events -->
+  <div class="main-event-heading-container">
+    <div class="section-content">
+      <h2 class="section-title main-event-heading-title" id="our-events-header">Our Events</h2>
+      <p class="section-subtitle main-event-heading-subtitle">Explore the full spectrum of the Integration Fest
+        experience.</p>
+    </div>
+  </div>
+
+  <!-- Tech Overview Section -->
+  <section id="tech" class="page-section">
+    <div class="section-content">
+      <h2 class="section-title">Tech Fest</h2>
+      <p class="section-subtitle">The arena for analytical minds and future innovators</p>
+      <p class="section-text">
+        The Tech chapter hosts highly anticipated events like the Mathematics Talent Reward Programme (MTRP), a rigorous
+        national-level math olympiad, and SPARQ, a data analytics contest in collaboration with ISI Kolkatas CAIML. Test
+        your calculus mastery in the high-pressure environment of the Integration Bee.
+      </p>
+      <div class="cta-buttons">
+        <a href="/#register-header" class="btn btn-primary">View All Tech Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultural Overview Section -->
+  <section id="cultural" class="page-section">
+    <div class="section-content">
+      <h2 class="section-title">Cultural Fest</h2>
+      <p class="section-subtitle">Where creativity meets performance and diplomacy</p>
+      <p class="section-text">
+        Celebrate vibrant arts with Alaap (music), Model United Nations (MUN), Thru Da Lens (photography), and Between
+        The Lines (writing). This chapter fosters connections, creativity, and public discourse.
+      </p>
+      <div class="cta-buttons">
+        <a href="/cultural/" class="btn btn-primary">View All Cultural Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sports Overview Section -->
+  <section id="sports" class="page-section">
+    <div class="section-content">
+      <h2 class="section-title">Sports Fest</h2>
+      <p class="section-subtitle">The competitive spirit demanding precision and strategy</p>
+      <p class="section-text">
+        High-stakes tournaments including Football, Cricket, Chess (SBDS recognized), Bridge, and Table Tennis. Over 300
+        athletes compete in four-day inter-college leagues emphasizing team spirit and excellence.
+      </p>
+      <div class="cta-buttons">
+        <a href="/sports/" class="btn btn-primary">View All Athletic Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Overview Section -->
+  <section id="gallery-overview" class="page-section">
+    <div class="section-content">
+      <h2 class="section-title">Gallery</h2>
+      <p class="section-subtitle">A visual chronicle of the Integration journey.</p>
+      <p class="section-text">
+        The Gallery serves as a comprehensive visual archive of the excitement, innovation, and talent that define
+        Integration. Browse stunning photography from the Thru Da Lens contest, relive the electrifying
+        performances from cultural nights, and view candid moments from every competition. This is where the
+        mathematical precision of the Tech events, the passion of the Cultural stages, and the raw energy of the
+        Sports fields are preserved for reflection and inspiration.
+      </p>
+      <div class="cta-buttons">
+        <a href="/gallery/" class="btn btn-primary">Explore Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heading for Registration -->
+  <div class="main-event-heading-container">
+    <div class="section-content">
+      <h2 class="section-title main-event-heading-title" id="register-header">Registrations</h2>
+      <p class="section-subtitle main-event-heading-subtitle">Find contest rules and register for all 12 events here.
+      </p>
+    </div>
+  </div>
+
+  <!-- Event Cards -->
+  <div class="events-container" id="events">
+    <div class="event-card">
+      <span class="event-icon">📊</span>
+      <h3 class="event-title">SPARQ</h3>
+      <p class="event-desc">Data and Quant Fest</p>
+      <a href="/sparq/" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🧮</span>
+      <h3 class="event-title">MTRP</h3>
+      <p class="event-desc">Mathematics Talent Reward Program</p>
+      <a href="/mtrp/" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">∫</span>
+      <h3 class="event-title">Integration Bee</h3>
+      <p class="event-desc">Calculus Speed Competition</p>
+      <a href="/intbee/" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🎵</span>
+      <h3 class="event-title">Alaap</h3>
+      <p class="event-desc">Indian Classical Music</p>
+      <a href="/cultural/#alaap" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🎭</span>
+      <h3 class="event-title">Model UN</h3>
+      <p class="event-desc">Diplomacy Simulation</p>
+      <a href="/cultural/#mun" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">✍️</span>
+      <h3 class="event-title">Between The Lines</h3>
+      <p class="event-desc">Ink Your Ideas. Inspire the World.</p>
+      <a href="/cultural/#bw-the-lines" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">📸</span>
+      <h3 class="event-title">Thru Da Lens</h3>
+      <p class="event-desc">Photography Contest</p>
+      <a href="/cultural/#thru-da-lens" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🏏</span>
+      <h3 class="event-title">Cricket</h3>
+      <p class="event-desc">The Ultimate Inter-College Cricket Clash.</p>
+      <a href="/sports/#cricket" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">⚽</span>
+      <h3 class="event-title">Football</h3>
+      <p class="event-desc">Inter-College Tournament</p>
+      <a href="/sports/#football" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">♟️</span>
+      <h3 class="event-title">Chess</h3>
+      <p class="event-desc">SBDS Recognized Rapid Event</p>
+      <a href="/sports/#chess" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">🏓</span>
+      <h3 class="event-title">Table Tennis</h3>
+      <p class="event-desc">The Battle of the Fast Paces.</p>
+      <a href="/sports/#table-tennis" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+    <div class="event-card">
+      <span class="event-icon">♣️</span>
+      <h3 class="event-title">Bridge</h3>
+      <p class="event-desc">Strategy, Bids, and Brilliant Partnerships.</p>
+      <a href="/sports/#bridge" class="btn btn-primary btn-card">Register Now</a>
+    </div>
+  </div>
+
+  <!-- Closing Heading -->
+  <div class="main-event-heading-container">
+    <div class="section-content">
+      <h2 class="section-title main-event-heading-title" id="footer-header">The Integration Journey</h2>
+      <p class="section-subtitle main-event-heading-subtitle">Uniting thousands of competitors, volunteers, and
+        visionaries every year. </p>
+    </div>
+  </div>
+
+  <!-- Footer Section with Graph -->
+  <section class="footer-section">
+    <div class="graph-container">
+      <canvas id="graphCanvas"></canvas>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Events</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3300+</div>
+        <div class="stat-label">Footfall</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">Volunteers</div>
+      </div>
+    </div>
+
+    <!-- Tabbed Content -->
+    <div class="footer-tabs" id="footer-tabs">
+      <div class="tab-buttons">
+        <button class="tab-button" data-tab="venue">Venue</button>
+        <button class="tab-button active" data-tab="sponsors">Sponsors</button>
+        <button class="tab-button" data-tab="contact">Contact Us</button>
+      </div>
+
+      <div class="tab-content" id="venue">
+        <h3>Indian Statistical Institute, Kolkata</h3>
+        <p>
+          The Indian Statistical Institute, Kolkata, a premier institute of national importance founded by
+          Prof. P. C. Mahalanobis, stands at the forefront of research and education in statistics, mathematics,
+          computer science, and data-driven disciplines.
+        </p>
+        <p>
+          <strong>Address:</strong><br>
+          203 Barrackpore Trunk Road<br>
+          Kolkata, West Bengal 700108<br>
+          India
+        </p>
+      </div>
+
+      <div class="tab-content" id="sponsors">
+        <h3>Our Sponsors</h3>
+        <p>
+          <!-- Enter stuff -->
+        </p>
+        <p>
+          <!-- enter stuff -->
+        </p>
+      </div>
+
+      <div class="tab-content" id="contact">
+        <h3>Get in Touch</h3>
+        <p>For sponsorship opportunities, event inquiries, or general questions, reach out to our team:</p>
+
+        <div class="contact-info">
+          <div class="contact-card">
+            <h4>Sponsorship</h4>
+            <!-- TODO: enter the final email here -->
+            <p><strong>Email:</strong> <i>insert email here</i></p>
+          </div>
+          <div class="contact-card">
+            <h4>Helpdesk</h4>
+            <p><strong>Email:</strong> <a href="mailto:helpdesk@integrationfest.in">helpdesk@integrationfest.in</a></p>
+          </div>
+          <div class="contact-card">
+            <h4>Instagram</h4>
+            <p><strong>Link:</strong>
+              <a href="https://www.instagram.com/isik_integration" target="_blank">
+                Instagram Page
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Footer -->
+    <div class="footer-bottom">
+      <div class="footer-logo">INTEGRATION FEST 2026</div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+  <script src="/assets/js/global.js"></script>
+</body>
+
+</html>

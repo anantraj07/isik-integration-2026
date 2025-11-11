@@ -529,7 +529,7 @@ body.light-mode #canvas3d {
 
 .poster-btn:hover {
   background: rgba(0, 212, 255, 0.25);
-  color: white;
+  /* color: white; */
   transform: translateY(-3px);
   box-shadow: 0 10px 30px var(--shadow-color);
 }

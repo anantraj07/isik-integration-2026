@@ -89,16 +89,6 @@ document.querySelectorAll(".page-section").forEach((section) => {
   observer.observe(section);
 });
 
-// Coming Soon button interaction
-document.querySelectorAll(".poster-btn").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    showNotification(
-      "✨ Posters will be released soon! Stay tuned for updates! ✨",
-    );
-  });
-});
-
 // Parallax effect for hero section
 window.addEventListener(
   "scroll",

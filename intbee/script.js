@@ -223,14 +223,6 @@ document.querySelectorAll(".page-section").forEach((section) => {
   observer.observe(section);
 });
 
-// Poster button notification
-document.querySelectorAll(".poster-btn").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    showNotification("🐝 Event poster will be released soon! Stay tuned!");
-  });
-});
-
 // Parallax effect for hero section
 window.addEventListener(
   "scroll",

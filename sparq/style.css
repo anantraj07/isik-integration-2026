@@ -13,6 +13,8 @@
   --accent-teal: #00bfa5;
   --border-color: rgba(0, 212, 255, 0.3);
   --shadow-color: rgba(0, 212, 255, 0.4);
+  --poster-color: rgba(0, 212, 255, 0.15);
+  --poster-hover-color: rgba(0, 212, 255, 0.25);
   --navbar-bg: rgba(10, 14, 39, 0.95);
   --chart-green: #00e676;
   --chart-red: #ff5252;
@@ -461,79 +463,6 @@ body.light-mode #canvas3d {
   margin-bottom: 0;
 }
 
-/* Poster Section */
-.poster-placeholder {
-  background: var(--bg-card);
-  border: 3px dashed var(--border-color);
-  border-radius: 20px;
-  padding: 80px 40px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  margin-bottom: 30px;
-  transition: all 0.4s ease;
-  width: fit-content;
-  margin: auto;
-  padding: 60px 80px;
-}
-
-.poster-placeholder:hover {
-  border-color: var(--accent-primary);
-  background: rgba(0, 212, 255, 0.05);
-}
-
-.poster-placeholder img {
-  width: 100%;
-  height: auto;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-}
-
-.poster-icon {
-  font-size: 5rem;
-  margin-bottom: 20px;
-  opacity: 0.7;
-}
-
-.poster-text {
-  font-size: 1.5rem;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-
-.poster-container {
-  text-align: center;
-  padding: 20px;
-}
-
-.form-btn-container {
-  text-align: center;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-.poster-btn {
-  display: inline-block;
-  padding: 14px 35px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--text-primary);
-  background: rgba(0, 212, 255, 0.15);
-  border: 2px solid var(--accent-primary);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.poster-btn:hover {
-  background: rgba(0, 212, 255, 0.25);
-  /* color: white; */
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px var(--shadow-color);
-}
-
 /* Event Cards */
 .event-card {
   background: var(--bg-card);
@@ -733,55 +662,6 @@ body.light-mode #canvas3d {
   color: var(--accent-gold);
   font-style: italic;
   animation: pulse 2s infinite;
-}
-
-/* Registration Section */
-.registration-box {
-  background: var(--bg-card);
-  border: 2px solid var(--border-color);
-  border-radius: 20px;
-  padding: 50px;
-  backdrop-filter: blur(15px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-}
-
-.registration-title {
-  font-size: 2rem;
-  color: var(--text-primary);
-  text-align: center;
-  margin-bottom: 40px;
-  font-weight: 700;
-}
-
-.form-container {
-  min-height: 400px;
-}
-
-.form-placeholder {
-  background: rgba(0, 212, 255, 0.05);
-  border: 3px dashed var(--border-color);
-  border-radius: 15px;
-  padding: 80px 40px;
-  text-align: center;
-  transition: all 0.4s ease;
-}
-
-.form-placeholder:hover {
-  border-color: var(--accent-primary);
-  background: rgba(0, 212, 255, 0.1);
-}
-
-.form-icon {
-  font-size: 5rem;
-  margin-bottom: 20px;
-  opacity: 0.7;
-}
-
-.form-text {
-  font-size: 1.5rem;
-  color: var(--text-secondary);
-  margin-bottom: 15px;
-  font-weight: 600;
 }
 
 /* Footer */

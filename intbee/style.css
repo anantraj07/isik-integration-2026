@@ -13,6 +13,8 @@
   --accent-gold: #ffd700;
   --border-color: rgba(255, 235, 59, 0.4);
   --shadow-color: rgba(255, 235, 59, 0.5);
+  --poster-color: rgba(255, 235, 59, 0.15);
+  --poster-hover-color: rgba(255, 235, 59, 0.25);
   --navbar-bg: rgba(26, 26, 46, 0.95);
 }
 
@@ -449,62 +451,6 @@ body.light-mode #canvas3d {
 
 .about-text:last-child {
   margin-bottom: 0;
-}
-
-/* Poster Section */
-.poster-placeholder {
-  background: var(--bg-card);
-  border: 3px dashed var(--border-color);
-  border-radius: 20px;
-  padding: 80px 40px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  margin-bottom: 30px;
-  transition: all 0.4s ease;
-}
-
-.poster-placeholder:hover {
-  border-color: var(--accent-primary);
-  background: rgba(255, 235, 59, 0.05);
-}
-
-.poster-icon {
-  font-size: 5rem;
-  margin-bottom: 20px;
-  opacity: 0.7;
-}
-
-.poster-text {
-  font-size: 1.5rem;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-
-.poster-container {
-  text-align: center;
-  padding: 20px;
-}
-
-.poster-btn {
-  display: inline-block;
-  padding: 14px 35px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--text-primary);
-  background: rgba(255, 235, 59, 0.15);
-  border: 2px solid var(--accent-primary);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.poster-btn:hover {
-  background: rgba(255, 235, 59, 0.25);
-  color: #1a1a1a;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 /* Event Cards */

@@ -559,6 +559,11 @@ body.light-mode #canvas3d {
   height: 100%;
   background: rgba(0, 0, 0, 0.98);
   z-index: 3000;
+  touch-action: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .lightbox.active {
@@ -611,6 +616,7 @@ body.light-mode #canvas3d {
   max-width: 90%;
   max-height: 90vh;
   text-align: center;
+  touch-action: none;
 }
 
 .lightbox img {
@@ -619,6 +625,16 @@ body.light-mode #canvas3d {
   border-radius: 15px;
   box-shadow: 0 30px 100px var(--shadow-color);
   transition: transform 0.2s;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.lightbox img.zoom-active {
+  cursor: grab;
+}
+
+.lightbox img.zoom-active:active {
+  cursor: grabbing;
 }
 
 .lightbox-info {
@@ -748,6 +764,27 @@ footer p {
   .carousel-btn {
     width: 45px;
     height: 45px;
+    font-size: 1.5rem;
+  }
+
+  .lightbox img {
+    cursor: default;
+  }
+
+  .lightbox-controls {
+    top: 10px;
+    right: 10px;
+  }
+
+  .lb-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+
+  .lb-close {
+    width: 50px;
+    height: 50px;
     font-size: 1.5rem;
   }
 }

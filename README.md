@@ -85,7 +85,9 @@ We welcome contributions from the ISI community and external developers!
 
 ---
 * **Website Management Team:**
+    * Himadri Mandal
     * Avigyan Chakraborty
     * Anant Raj
     * Jishnu Ray Chaudhari
     * Tanmay Rai
+      

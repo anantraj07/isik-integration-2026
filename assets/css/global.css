@@ -280,4 +280,18 @@ body.light-mode .toggle-icon {
   .poster-placeholder {
     padding: 10px 8px;
   }
+
+  .registration-title {
+    font-size: 1.6rem;
+  }
+
+  .registration-box {
+    padding: 30px 20px 10px;
+  }
+}
+
+@media (max-width: 370px) {
+  .registration-box {
+    padding: 30px 0 10px;
+  }
 }

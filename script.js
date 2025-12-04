@@ -1,398 +1,174 @@
-// Loading Screen
-// setTimeout(() => {
-//   document.getElementById("resultText").classList.add("show");
-//   setTimeout(() => startCelebration(), 800);
-// }, 2500);
-//
-// setTimeout(() => {
-//   document.getElementById("loadingScreen").classList.add("hidden");
-//   setTimeout(() => {
-//     document.getElementById("celebrationContainer").style.display = "none";
-//   }, 1000);
-// }, 4500);
+/* --- script.js (FIXED: FLOW selectors, Performance Optimised) --- */
+document.addEventListener('DOMContentLoaded', () => {
 
-// Celebration Effects
-function startCelebration() {
-  const container = document.getElementById("celebrationContainer");
+    const canvas = document.getElementById('flowCanvas'); // FIXED ID
+    const ctx = canvas.getContext('2d');
+    const nodes = document.querySelectorAll('.flow-node'); // FIXED CLASS NAME
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
 
-  for (let i = 0; i < 5; i++) {
-    setTimeout(() => createEnergyWave(container), i * 200);
-  }
+    let particles = [];
+    let devNodes = []; 
+    let width, height;
 
-  setTimeout(() => createParticleBurst(container), 300);
-
-  for (let i = 0; i < 20; i++) {
-    setTimeout(() => createLightRay(container), i * 80);
-  }
-
-  for (let i = 0; i < 15; i++) {
-    setTimeout(() => createGlowOrb(container), i * 150);
-  }
-}
-
-function createEnergyWave(container) {
-  const wave = document.createElement("div");
-  wave.className = "energy-wave";
-  const colors = [
-    "rgba(102, 126, 234, 0.6)",
-    "rgba(118, 75, 162, 0.6)",
-    "rgba(240, 147, 251, 0.6)",
-  ];
-  wave.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
-  container.appendChild(wave);
-  setTimeout(() => wave.remove(), 1500);
-}
-
-function createParticleBurst(container) {
-  const centerX = window.innerWidth / 2;
-  const centerY = window.innerHeight / 2;
-  const colors = ["#667eea", "#764ba2", "#f093fb", "#4facfe"];
-
-  for (let i = 0; i < 60; i++) {
-    const particle = document.createElement("div");
-    particle.className = "particle-burst";
-    particle.style.color = colors[Math.floor(Math.random() * colors.length)];
-    particle.style.left = centerX + "px";
-    particle.style.top = centerY + "px";
-
-    const angle = (Math.PI * 2 * i) / 60;
-    const velocity = Math.random() * 200 + 150;
-    const tx = Math.cos(angle) * velocity;
-    const ty = Math.sin(angle) * velocity;
-
-    particle.style.setProperty("--tx", tx + "px");
-    particle.style.setProperty("--ty", ty + "px");
-    particle.style.animation = "particleExpand 1.5s ease-out forwards";
-
-    container.appendChild(particle);
-    setTimeout(() => particle.remove(), 1500);
-  }
-}
-
-function createLightRay(container) {
-  const ray = document.createElement("div");
-  ray.className = "light-ray";
-  ray.style.left = Math.random() * 100 + "%";
-  ray.style.top = "50%";
-  ray.style.transform = "rotate(" + Math.random() * 360 + "deg)";
-  const colors = [
-    "linear-gradient(to bottom, rgba(102, 126, 234, 0.8), transparent)",
-    "linear-gradient(to bottom, rgba(240, 147, 251, 0.8), transparent)",
-    "linear-gradient(to bottom, rgba(79, 172, 254, 0.8), transparent)",
-  ];
-  ray.style.background = colors[Math.floor(Math.random() * colors.length)];
-  container.appendChild(ray);
-  setTimeout(() => ray.remove(), 2000);
-}
-
-function createGlowOrb(container) {
-  const orb = document.createElement("div");
-  orb.className = "glow-orb";
-  const startX = window.innerWidth / 2;
-  const startY = window.innerHeight / 2;
-  orb.style.left = startX + "px";
-  orb.style.top = startY + "px";
-
-  const angle = Math.random() * Math.PI * 2;
-  const distance = Math.random() * 300 + 200;
-  const tx = Math.cos(angle) * distance;
-  const ty = Math.sin(angle) * distance;
-
-  orb.style.setProperty("--tx", tx + "px");
-  orb.style.setProperty("--ty", ty + "px");
-
-  container.appendChild(orb);
-  setTimeout(() => orb.remove(), 3000);
-}
-
-// Lorenz Attractor (Chaos Theory)
-const chaosCanvas = document.getElementById("chaosCanvas");
-const chaosCtx = chaosCanvas.getContext("2d");
-chaosCanvas.width = window.innerWidth;
-chaosCanvas.height = window.innerHeight;
-
-class LorenzAttractor {
-  constructor() {
-    this.x = 0.1;
-    this.y = 0;
-    this.z = 0;
-    this.a = 10;
-    this.b = 28;
-    this.c = 8.0 / 3.0;
-    this.dt = 0.005;
-    this.points = [];
-    this.maxPoints = 2000;
-    this.hue = Math.random() * 60 + 220;
-  }
-
-  update() {
-    const dx = this.a * (this.y - this.x) * this.dt;
-    const dy = (this.x * (this.b - this.z) - this.y) * this.dt;
-    const dz = (this.x * this.y - this.c * this.z) * this.dt;
-
-    this.x += dx;
-    this.y += dy;
-    this.z += dz;
-
-    this.points.push({ x: this.x, y: this.y, z: this.z });
-    if (this.points.length > this.maxPoints) {
-      this.points.shift();
+    // Function to retrieve CSS variables dynamically (Unchanged)
+    function getThemeColors() {
+        const style = getComputedStyle(body);
+        return {
+            bg: style.getPropertyValue('--theme-bg').trim(),
+            particle: style.getPropertyValue('--accent-primary').trim(),
+            connection: style.getPropertyValue('--accent-primary').trim().replace(')', ', 0.15)').replace('rgb', 'rgba'),
+            active: style.getPropertyValue('--accent-secondary').trim(),
+        };
     }
-  }
 
-  draw() {
-    const scale = 8;
-    const centerX = chaosCanvas.width / 2;
-    const centerY = chaosCanvas.height / 2;
+    // --- Particle Class (Unchanged logic) ---
+    class Particle {
+        constructor(isDev, x, y, id) {
+            this.x = x || Math.random() * width;
+            this.y = y || Math.random() * height;
+            this.vx = Math.random() * 0.5 - 0.25; 
+            this.vy = Math.random() * 0.5 - 0.25;
+            this.radius = isDev ? 4 : 1.5; 
+            this.isDev = isDev;
+            this.id = id;
+        }
 
-    chaosCtx.beginPath();
-    this.points.forEach((point, i) => {
-      const screenX = centerX + point.x * scale;
-      const screenY = centerY + point.y * scale;
+        update() {
+            if (this.isDev) {
+                // Ensures developer particle stays centered on the card
+                const rect = nodes[this.id].getBoundingClientRect();
+                this.x = rect.left + rect.width / 2;
+                this.y = rect.top + rect.height / 2 + window.scrollY;
+                return;
+            }
 
-      if (i === 0) {
-        chaosCtx.moveTo(screenX, screenY);
-      } else {
-        chaosCtx.lineTo(screenX, screenY);
-      }
+            this.x += this.vx;
+            this.y += this.vy;
+
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+
+        draw(colors, active) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            
+            const color = this.isDev ? colors.active : colors.particle;
+
+            ctx.shadowBlur = this.isDev ? 15 : 5;
+            ctx.shadowColor = active ? colors.active : color;
+            ctx.fillStyle = active ? colors.active : color;
+            
+            ctx.fill();
+        }
+    }
+
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function createParticles() {
+        particles = [];
+        devNodes = [];
+        // PERFORMANCE FIX: Reduced standard particles from 100 to 50
+        const numStandardParticles = 50; 
+        
+        for (let i = 0; i < numStandardParticles; i++) {
+            particles.push(new Particle(false));
+        }
+        
+        nodes.forEach((node, index) => {
+            const devParticle = new Particle(true, null, null, index);
+            particles.push(devParticle);
+            devNodes.push(devParticle);
+        });
+    }
+
+    // --- Main Animation Loop (Reads dynamic colors every frame) ---
+    let hoveredNodeId = -1;
+
+    function animateIntegrationFlow() { // FIXED FUNCTION NAME
+        requestAnimationFrame(animateIntegrationFlow);
+        const colors = getThemeColors();
+
+        // Clear canvas with a slight trail effect
+        ctx.fillStyle = colors.bg.replace(')', ', 0.1)').replace('rgb', 'rgba');
+        ctx.fillRect(0, 0, width, height);
+        
+        // 1. Draw Connections (Unchanged logic)
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const p1 = particles[i];
+                const p2 = particles[j];
+                const dx = p1.x - p2.x;
+                const dy = p1.y - p2.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const maxDistance = 150; 
+
+                if (distance < maxDistance) {
+                    const opacity = 1 - (distance / maxDistance);
+                    const isActive = (p1.isDev && p1.id === hoveredNodeId) || (p2.isDev && p2.id === hoveredNodeId);
+                    
+                    ctx.beginPath();
+                    ctx.strokeStyle = isActive ? colors.active : colors.connection; 
+                    ctx.lineWidth = isActive ? 1.5 : 0.5; 
+                    ctx.globalAlpha = isActive ? 1 : opacity * (hoveredNodeId === -1 ? 1 : 0.2); 
+                    
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        // 2. Draw Particles (Unchanged logic)
+        particles.forEach(p => {
+            p.update();
+            const isActive = p.isDev && p.id === hoveredNodeId;
+            p.draw(colors, isActive);
+        });
+
+        ctx.globalAlpha = 1; 
+    }
+    
+    // --- Theme Toggle Synchronization (Unchanged logic) ---
+    if (toggle) {
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+            } else {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+            }
+        });
+    }
+
+    // --- Node Hover Listeners (Unchanged logic) ---
+    nodes.forEach(node => {
+        const id = parseInt(node.dataset.nodeId);
+        
+        node.addEventListener('mouseenter', () => { hoveredNodeId = id; });
+        node.addEventListener('mouseleave', () => { hoveredNodeId = -1; });
     });
 
-    const alpha = 0.5;
-    chaosCtx.strokeStyle = "hsla(" + this.hue + ", 70%, 60%, " + alpha + ")";
-    chaosCtx.lineWidth = 1;
-    chaosCtx.stroke();
-  }
-}
-
-const attractor1 = new LorenzAttractor();
-const attractor2 = new LorenzAttractor();
-attractor2.x = -0.1;
-attractor2.hue = 260;
-const attractors = [attractor1, attractor2];
-
-function animateChaos() {
-  chaosCtx.fillStyle = "rgba(0, 0, 0, 0.001)";
-  chaosCtx.fillRect(0, 0, chaosCanvas.width, chaosCanvas.height);
-
-  attractors.forEach((attractor) => {
-    attractor.update();
-    attractor.draw();
-  });
-
-  requestAnimationFrame(animateChaos);
-}
-
-animateChaos();
-
-// Adaptive Particle Background
-const canvas = document.getElementById("canvas3d");
-const ctx = canvas.getContext("2d");
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-class Particle {
-  constructor() {
-    this.reset();
-  }
-
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 0.7;
-    this.vy = (Math.random() - 0.5) * 0.7;
-    this.size = Math.random() * 2 + 1;
-  }
-
-  move() {
-    this.x += this.vx;
-    this.y += this.vy;
-
-    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-  }
-
-  draw(color) {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = color;
-    ctx.fill();
-  }
-}
-
-const particles = Array.from({ length: 70 }, () => new Particle());
-
-function isLightMode() {
-  return document.body.classList.contains("light-mode");
-}
-
-function animate() {
-  const light = isLightMode();
-
-  // Fade trail effect — use light or dark background tint
-  ctx.globalCompositeOperation = "source-over";
-  ctx.fillStyle = light
-    ? "rgba(255, 255, 255, 0.2)" // subtle white fade
-    : "rgba(0, 0, 0, 0.2)"; // subtle black fade
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  // Particle drawing
-  ctx.globalCompositeOperation = light ? "source-over" : "lighter";
-  const particleColor = light
-    ? "rgba(60, 80, 200, 0.5)" // crisp bluish tone for light mode
-    : "rgba(130, 160, 255, 0.4)"; // glowing tone for dark mode
-
-  particles.forEach((p) => {
-    p.move();
-    p.draw(particleColor);
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-
-// Adaptive Animated Footer Graph
-const graphCanvas = document.getElementById("graphCanvas");
-const g = graphCanvas.getContext("2d");
-
-function resizeGraphCanvas() {
-  graphCanvas.width = graphCanvas.offsetWidth;
-  graphCanvas.height = graphCanvas.offsetHeight;
-}
-resizeGraphCanvas();
-window.addEventListener("resize", resizeGraphCanvas);
-
-let t = 0;
-const points = [];
-const maxPoints = 200;
-
-function isLightMode() {
-  return document.body.classList.contains("light-mode");
-}
-
-function animateGraph() {
-  const light = isLightMode();
-
-  // Smooth background fade
-  g.globalCompositeOperation = "source-over";
-  g.fillStyle = light ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.2)";
-  g.fillRect(0, 0, graphCanvas.width, graphCanvas.height);
-
-  // Generate new waveform point
-  const newY =
-    graphCanvas.height / 2 +
-    Math.sin(t * 0.05) * 60 +
-    Math.cos(t * 0.03) * 40 +
-    Math.sin(t * 0.02) * 30;
-
-  points.push(newY);
-  if (points.length > maxPoints) points.shift();
-
-  // Grid lines
-  g.lineWidth = 1;
-  g.strokeStyle = light ? "rgba(0, 0, 0, 0.07)" : "rgba(102, 126, 234, 0.1)";
-  for (let i = 0; i < 5; i++) {
-    const y = (graphCanvas.height / 4) * i;
-    g.beginPath();
-    g.moveTo(0, y);
-    g.lineTo(graphCanvas.width, y);
-    g.stroke();
-  }
-
-  // Graph line
-  const pointSpacing = graphCanvas.width / maxPoints;
-  g.beginPath();
-  points.forEach((y, i) => {
-    const x = i * pointSpacing;
-    if (i === 0) g.moveTo(x, y);
-    else g.lineTo(x, y);
-  });
-
-  g.lineWidth = 2;
-  g.strokeStyle = light ? "rgba(60, 80, 200, 0.8)" : "rgba(130, 160, 255, 0.8)";
-  g.shadowBlur = light ? 0 : 10;
-  g.shadowColor = light ? "transparent" : "rgba(102, 126, 234, 0.7)";
-  g.stroke();
-  g.shadowBlur = 0;
-
-  // Gradient fill
-  const grad = g.createLinearGradient(0, 0, 0, graphCanvas.height);
-  if (light) {
-    grad.addColorStop(0, "rgba(60, 80, 200, 0.15)");
-    grad.addColorStop(1, "rgba(60, 80, 200, 0)");
-  } else {
-    grad.addColorStop(0, "rgba(102, 126, 234, 0.25)");
-    grad.addColorStop(1, "rgba(102, 126, 234, 0)");
-  }
-
-  g.lineTo(graphCanvas.width, graphCanvas.height);
-  g.lineTo(0, graphCanvas.height);
-  g.closePath();
-  g.fillStyle = grad;
-  g.fill();
-
-  // Floating dots
-  const dotColor = light
-    ? "rgba(60, 80, 200, 0.7)"
-    : "rgba(240, 147, 251, 0.8)";
-  const haloColor = light
-    ? "rgba(60, 80, 200, 0.2)"
-    : "rgba(240, 147, 251, 0.4)";
-
-  for (let i = 0; i < 3; i++) {
-    const idx = Math.floor(points.length * (i / 3));
-    if (idx < points.length) {
-      const x = idx * pointSpacing;
-      const y = points[idx];
-
-      g.beginPath();
-      g.arc(x, y, 3, 0, Math.PI * 2);
-      g.fillStyle = dotColor;
-      g.fill();
-
-      g.beginPath();
-      g.arc(x, y, 7, 0, Math.PI * 2);
-      g.strokeStyle = haloColor;
-      g.lineWidth = 2;
-      g.stroke();
+    // Start the integration flow
+    createParticles();
+    animateIntegrationFlow(); // FIXED FUNCTION CALL
+    
+    // Navbar Toggle for Mobile (Standard)
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
     }
-  }
-
-  t++;
-  requestAnimationFrame(animateGraph);
-}
-
-animateGraph();
-
-// Resize handler
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  chaosCanvas.width = window.innerWidth;
-  chaosCanvas.height = window.innerHeight;
-  graphCanvas.width = graphCanvas.offsetWidth;
-  graphCanvas.height = graphCanvas.offsetHeight;
-});
-
-// Tab switching functionality for footer buttons
-const tabButtons = document.querySelectorAll(".tab-button");
-const tabContents = document.querySelectorAll(".tab-content");
-
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const target = button.getAttribute("data-tab");
-
-    // Remove active states
-    tabButtons.forEach((btn) => btn.classList.remove("active"));
-    tabContents.forEach((content) => content.classList.remove("active"));
-
-    // Add active to selected
-    button.classList.add("active");
-    document.getElementById(target).classList.add("active");
-  });
 });

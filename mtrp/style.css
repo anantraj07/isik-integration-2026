@@ -711,6 +711,13 @@ body.light-mode #canvas3d {
   font-style: italic;
 }
 
+.quick-link-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .btn-hero {
   display: inline-block;
   padding: 18px 45px;
@@ -728,6 +735,7 @@ body.light-mode #canvas3d {
   box-shadow: 0 8px 30px var(--shadow-color);
   position: relative;
   overflow: hidden;
+  margin: 10px 20px;
 }
 
 .btn-hero:hover {

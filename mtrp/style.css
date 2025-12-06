@@ -724,46 +724,50 @@ body.light-mode #canvas3d {
   margin: 10px 20px;
 }
 
-/* Register Now Button - Purple/Blue gradient (primary action) */
+/* Register Now Button - Deep Purple/Indigo gradient */
 .btn-register {
-  background: linear-gradient(135deg, #7c3aed, #2563eb);
-  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35);
+  background: linear-gradient(135deg, #6d28d9, #4338ca);
+  box-shadow: 0 8px 30px rgba(109, 40, 217, 0.5);
 }
 
 .btn-register:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 45px rgba(124, 58, 237, 0.5);
+  box-shadow: 0 15px 45px rgba(109, 40, 217, 0.7);
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
 }
 
-/* View Past Papers Button - Teal/Cyan gradient (secondary action) */
+/* View Past Papers Button - Deep Teal/Blue gradient */
 .btn-past-papers {
-  background: linear-gradient(135deg, #0891b2, #06b6d4);
-  box-shadow: 0 8px 30px rgba(8, 145, 178, 0.35);
+  background: linear-gradient(135deg, #0e7490, #0284c7);
+  box-shadow: 0 8px 30px rgba(14, 116, 144, 0.5);
 }
 
 .btn-past-papers:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 45px rgba(8, 145, 178, 0.5);
+  box-shadow: 0 15px 45px rgba(14, 116, 144, 0.7);
+  background: linear-gradient(135deg, #0891b2, #0369a1);
 }
 
-/* Dark mode adjustments */
+/* Dark mode - Even more vibrant */
 @media (prefers-color-scheme: dark) {
   .btn-register {
-    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.6);
   }
   
   .btn-register:hover {
-    box-shadow: 0 15px 45px rgba(139, 92, 246, 0.6);
+    box-shadow: 0 15px 45px rgba(124, 58, 237, 0.8);
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
   }
   
   .btn-past-papers {
-    background: linear-gradient(135deg, #14b8a6, #22d3ee);
-    box-shadow: 0 8px 30px rgba(20, 184, 166, 0.4);
+    background: linear-gradient(135deg, #0891b2, #0369a1);
+    box-shadow: 0 8px 30px rgba(8, 145, 178, 0.6);
   }
   
   .btn-past-papers:hover {
-    box-shadow: 0 15px 45px rgba(20, 184, 166, 0.6);
+    box-shadow: 0 15px 45px rgba(8, 145, 178, 0.8);
+    background: linear-gradient(135deg, #06b6d4, #0284c7);
   }
 }
 .page-section {

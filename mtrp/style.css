@@ -301,14 +301,6 @@ body.light-mode #canvas3d {
   margin-bottom: 25px;
 }
 
-.coming-soon {
-  color: var(--accent-gold);
-  font-style: italic;
-  font-size: 1.3rem;
-  font-weight: 600;
-  animation: pulse 2s infinite;
-}
-
 .footer {
   position: relative;
   background: var(--navbar-bg);
